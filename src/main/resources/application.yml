@@ -1,0 +1,31 @@
+server:
+  port: 8080 #aplikasi run di port 8080
+  servlet:
+    context-path: /product
+
+spring:
+  application:
+    name: productservice
+  cache:
+    type: redis
+    redis:
+      time-to-live: 1m
+  data:
+   redis:
+     host: 158.178.246.204
+     port: 3009
+     username: default
+     password: CcLqI7gBESGsGfd3wZ7WJwI20kM1AOeMxtVXRg7XfN5QmB2imDNI5gDAIqf8qQzn
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://158.178.246.204:3006/bootcamp-product
+    username: postgres
+    password: EzeX24QUrUpUU3MabkzocHHRcIZ8cxiaDbbftRI5JQgiF4dPLGoDjyPQp9wK7mCT
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        ddl-auto: update
+        format_sql: true #prettify query sql at console
+        show_sql: true #show query sql at console
