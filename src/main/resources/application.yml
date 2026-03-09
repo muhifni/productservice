@@ -2,7 +2,6 @@ server:
   port: 8080 #aplikasi run di port 8080
   servlet:
     context-path: /product
-
 spring:
   application:
     name: productservice
@@ -29,3 +28,10 @@ spring:
         ddl-auto: update
         format_sql: true #prettify query sql at console
         show_sql: true #show query sql at console
+feign:
+  client:
+    usermanagement:
+      url: http://localhost:8081
+
+kafka:
+  bootstrap-servers: 158.178.246.204:3021

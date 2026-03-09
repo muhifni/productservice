@@ -1,16 +1,23 @@
 package com.example.product.service.impl
 
 import com.example.product.domain.dto.res.ResGetUserDetailDto
+import com.example.product.exception.DataNotFoundException
 import com.example.product.rest.UserManagementClient
 import com.example.product.service.UserService
-import jakarta.persistence.Cacheable
+import org.springframework.cache.annotation.Cacheable
+import org.springframework.stereotype.Service
 
-class UserServiceImpl (
+@Service
+class UserServiceImpl(
     private val userManagementClient: UserManagementClient
-): UserService {
-    @Cacheable("getUserById")
+) : UserService {
+
+    @Cacheable(value = ["getUserById"], key = "#id")
     override fun getUserById(id: Int): ResGetUserDetailDto {
-        val user = userManagementClient.getUserByID().body!!.data!!
+        val response = userManagementClient.getUserByID(id)
+        val user = response.body?.data
+            ?: throw DataNotFoundException("User with id $id not found")
+
         return ResGetUserDetailDto(
             userId = user.userId,
             fullName = user.fullName,

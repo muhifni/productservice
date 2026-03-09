@@ -1,4 +1,3 @@
 package com.example.product.exception
 
-class DataNotFoundExceptionHandler {
-}
+class DataNotFoundException(message: String) : RuntimeException(message)

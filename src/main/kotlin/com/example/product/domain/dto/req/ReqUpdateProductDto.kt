@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotNull
 import jakarta.validation.constraints.Positive
 
-data class ReqCreateProductDto(
+data class ReqUpdateProductDto(
 
     @field:NotBlank(message = "Name is required")
     val name: String,
